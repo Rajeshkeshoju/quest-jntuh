@@ -72,7 +72,6 @@ public class BaseApp {
         header.setFont(new Font("Monospaced", Font.PLAIN, 24));
         header.setForeground(Color.BLUE);
         header.setHorizontalAlignment(JLabel.CENTER);
-        header.setVerticalAlignment(JLabel.TOP);
 
         addView(header);
     }
