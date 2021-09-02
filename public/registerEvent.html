@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registeration</title>
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web\css\all.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col3">
+            <img src="/images/quest_logo.png" alt="" width=80 height=80>
+        </div>
+        <div class="col3" align="center">
+            <h1 style="text-align:center">
+                QUEST - <script>document.write(new Date().getFullYear())</script>
+                <br>
+            </h1>
+            <h4 style="text-align:center">DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING</h4>
+            <h2 style="text-align:center">JNTUH COLLEGE OF ENGINEERING HYDERABAD</h2>
+
+        </div>
+
+        <div class="col3">
+            <img src="/images/jntuhlogo.png" alt="" width=120 height=120>
+        </div>
+    </div>
+
+    <h2 style="text-align: center;"><u>REGISTER EVENT</u></h2>
+    <div class="formContainer">
+
+        <div class="w3-container">
+            <form method="POST" action="/eventRegistration">
+
+                <label for="eventName">Event Name</label>
+                <input type="text" id="eventName" placeholder="Event name"  maxlength="30" name="eventName" required>
+
+                <label for="eventId">Event Code</label>
+                <input type="text" id="eventId" placeholder="Event Code" name="eventId" maxlength="6" style="text-transform: uppercase;" required>
+
+                <label for="eventDate">Event Date</label>
+                <input type="date" id="eventDate" placeholder="Event date" name="eventDate" required>
+
+                <label for="eventTime">Event Time</label>
+                <input type="time" id="eventTime" placeholder="Event time" name="eventTime" required>
+
+                <input type="submit" value="Register event">
+            </form >
+        </div>
+    </div>
+</div>
+</body>
+</html>

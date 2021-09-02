@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 *.class
+=======
+/node_modules
+>>>>>>> 96e0bdf (Basic)

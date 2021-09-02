@@ -1,0 +1,558 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  background-color: #ff69b4;
+}
+.fas .fa {
+  margin-right: 10px;
+}
+body {
+  font-family: "Raleway", sans-serif;
+  height: 100%;
+  width: 100%;
+}
+.header {
+  position: sticky;
+  top: 0px;
+  background: radial-gradient(#fff, #ffd6d6);
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Add some padding inside the card container */
+.cardContainer {
+  display: flex;
+  padding: 2px 16px;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-flow: row nowrap;
+  text-align: center;
+  position: relative;
+  top: 80px;
+  overflow: hidden;
+}
+.cardContainer.center {
+  top: 10%;
+  position: relative;
+  left: 14%;
+
+  border: 3px solid green;
+  padding: 10px;
+}
+.formContainer {
+  width: 70%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 40%;
+  box-shadow: 5px 5px 5px rgb(92, 92, 92);
+}
+.formContainer #registerCandidate div.row {
+  display: inline-block;
+}
+.formContainer #registerCandidate input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.left {
+  float: left;
+  width: 50%;
+  padding: 10%;
+}
+
+.center {
+  display: inline-block;
+  margin: 0 auto;
+  width: 50%;
+  padding: 10%;
+  margin: auto;
+}
+
+.right {
+  float: right;
+  width: 50%;
+  padding: 10%;
+}
+.col3 img {
+  padding: 20px;
+  border-radius: 50%;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.column {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Style inputs with type="text", select elements and textareas */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="time"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+input:focus,
+select:focus {
+  border-color: #ff1493;
+}
+
+/* Style the submit button with a specific background color etc */
+input[type="submit"] {
+  border: 1px solid#FF69B4;
+  font-family: raleway;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type="submit"]:hover {
+  background-color: #ff1493;
+  color: white;
+  transition: all 0.7s ease;
+  -webkit-transition: all 0.7s ease;
+}
+
+/* Add a background color and some padding around the form */
+.w3-container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 30px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.table-sortable th {
+  cursor: pointer;
+}
+
+.table-sortable .th-sort-asc::after {
+  content: "\25b4";
+}
+
+.table-sortable .th-sort-desc::after {
+  content: "\25be";
+}
+
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after {
+  margin-left: 5px;
+}
+
+.table-sortable .th-sort-asc,
+.table-sortable .th-sort-desc {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.col3 a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+.col3 {
+  margin: 0 auto;
+  display: inline-block;
+}
+.col3 a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff1493;
+}
+.col2 {
+  flex-basis: 50%;
+  flex: 1;
+}
+.col2 h1 {
+  text-align: center;
+  font-size: 50px;
+  color: green;
+}
+.col2 img {
+  width: 100%;
+}
+.smallcon {
+  height: 500px;
+  margin-top: 70px;
+}
+.formcontainer {
+  position: relative;
+  max-width: 100%;
+  height: 450px;
+  text-align: center;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 0 20px gray;
+}
+.formcontainer form {
+  max-width: 300px;
+  padding: 0 20px;
+
+  position: absolute;
+  top: 130px;
+  transition: 1s;
+}
+span {
+  padding: 25px;
+
+  font-size: 25px;
+  font-weight: bold;
+}
+span:hover {
+  cursor: pointer;
+}
+span a {
+  text-decoration: none;
+}
+.formcontainer input {
+  width: 95%;
+  display: inline-block;
+  margin: 10px 0;
+  border-radius: 15px;
+  height: 25px;
+  font-size: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+button {
+  width: 100%;
+  padding: 2px;
+  border-radius: 20px;
+  margin-top: 10px;
+  background: #ff3300;
+  font-size: 25px;
+  color: white;
+}
+button:hover {
+  background: #00ffff;
+  cursor: pointer;
+  color: black;
+}
+#indicator {
+  width: 100px;
+  background: #ff6600;
+  height: 3px;
+  border-radius: 5px;
+  transition: 1s;
+  transform: translateX(60%);
+}
+#indicator1 {
+  width: 100px;
+  background: #ff6600;
+  height: 3px;
+  border-radius: 5px;
+  transition: 1s;
+  transform: translateX(-65%);
+}
+#login {
+  /* position:absolute; */
+  left: -320px;
+}
+#register {
+  right: 0px;
+}
+#login1 {
+  right: 0;
+}
+#register1 {
+  left: 320px;
+}
+.operation {
+  margin-top: 10px;
+  padding: 20px;
+  background: radial-gradient(#fff, #00ffff);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  font-size: 30px;
+  margin: 10px;
+  text-align: center;
+}
+ul li a {
+  text-decoration: none;
+  width: 350px;
+  cursor: pointer;
+  color: green;
+  display: inline-block;
+  margin: 20px 0;
+  /* border: 2px solid black; */
+  border-radius: 30px;
+  background: yellow;
+  font-weight: bold;
+  padding: 10px;
+}
+ul li a:hover {
+  color: red;
+  transform: scale(1.01, 1.01);
+}
+
+.payment {
+  width: 400px;
+  padding: 50px;
+  margin: 40px auto;
+  box-shadow: 0 0 20px gray;
+}
+#payment_status {
+  margin: 0 auto;
+  margin-top: 70px;
+  max-width: 300px;
+}
+.payment input {
+  margin: 20px 0;
+  width: 95%;
+  display: inline-block;
+  margin: 10px 0;
+  border-radius: 15px;
+  text-align: center;
+  height: 25px;
+  font-size: 20px;
+}
+.timetable {
+  margin-top: 50px;
+}
+.timetable table {
+  margin-top: 50px;
+  height: 300px;
+  margin: 0 auto;
+  width: 80%;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  border: 1px solid black;
+}
+td {
+  border: 1px solid black;
+}
+td input {
+  height: 33px;
+  outline: none;
+  text-align: center;
+}
+
+.push {
+  width: 200px;
+  margin: 0 auto;
+}
+.push a {
+  display: block;
+  margin-top: 20px;
+  text-decoration: none;
+  font-size: 30px;
+  text-align: center;
+  background: chartreuse;
+  border-radius: 20px;
+}
+.seating table {
+  width: 50%;
+  background-attachment: scroll;
+  margin: 10px auto;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+.adddel {
+  width: 200px;
+
+  margin: 10px auto;
+}
+.seating button {
+  display: inline-block;
+  width: 200px;
+  margin: 0 auto;
+
+  margin-right: 20px;
+}
+.results table {
+  width: 40%;
+  background-attachment: scroll;
+  margin: 10px auto;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+.rollno input {
+  display: block;
+  width: 200px;
+  padding: 3px;
+  margin: 0 auto;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.rollno button {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+.manyrows {
+  width: 200px;
+  margin: 10px auto;
+}
+/* input{
+    padding: 5px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 15px;
+} */
+.search {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: lightcyan;
+}
+.search input {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+}
+.search select {
+  width: 200px;
+  padding: 5px;
+  /* border-radius: 15px; */
+  margin: 0 auto;
+  text-align-last: center;
+}
+
+.search button {
+  width: 200px;
+  margin: 0 auto;
+}
+.details {
+  max-width: 80%;
+  padding: 10px;
+  margin: 10px auto;
+  border: 2px double black;
+}
+.maindetails {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.maindetails h3 {
+  margin: 10px auto;
+  text-align: center;
+  color: green;
+}
+.individual {
+  width: 100%;
+}
+.individual table {
+  margin: 0 auto;
+  width: 80%;
+  border-collapse: collapse;
+}
+/* .individual table tr{
+    padding: 30px;
+} */
+
+.individual table th {
+  padding: 10px;
+  text-align: center;
+}
+.individual tr:nth-child(even) {
+  background-color: lightgoldenrodyellow;
+}
+.tseats {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: lightcyan;
+}
+.seats {
+  max-width: 50%;
+  margin: 0 auto;
+}
+.seats input {
+  display: block;
+  padding: 5px;
+  margin: 0 auto;
+}
+.seats button {
+  width: 200px;
+}
+.myseat h1 {
+  text-align: center;
+}

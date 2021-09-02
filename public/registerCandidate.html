@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Registration</title>
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web\css\all.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+    <div class="row">
+        <div class="col3">
+            <img src="/images/quest_logo.png" alt="" width=80 height=80>
+        </div>
+        <div class="col3" align="center">
+            <h1 style="text-align:center">
+                QUEST - <script>document.write(new Date().getFullYear())</script>
+                <br>
+            </h1>
+            <h4 style="text-align:center">DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING</h4>
+            <h2 style="text-align:center">JNTUH COLLEGE OF ENGINEERING HYDERABAD</h2>
+
+        </div>
+
+        <div class="col3">
+            <img src="/images/jntuhlogo.png" alt="" width=120 height=120>
+        </div>
+    </div>
+
+    <h2 style="text-align: center;"><u>REGISTER CANDIDATE</u></h2>
+    <div class="formContainer">
+        <div class="w3-container">
+            <form action="/candidateRegistration" method="POST">
+          
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" maxlength="30" placeholder="Full name" required>
+
+                <label for="email">Mobile number</label>
+                <input type="tel" id="mobileNumber" name="mobileNumber" placeholder="Mobile number" maxlength="10" minlength="10" required>
+
+                <label for="contestNames">Registering for contest</label>
+                <select id="contestNames" name="contestNames" required>
+                    <option>--SELECT--</option>
+                    <% for (const i in contests) { %>
+                        <option value="<%= contests[i].eventId %>"> <%= contests[i].eventId + " - " + contests[i].eventName %> </option>
+                    <% } %>
+                </select>
+          
+                <input type="submit" id="submitData" value="Register candidate">
+          
+            </form>
+        </div>
+    </div>
+</body>
+</html>

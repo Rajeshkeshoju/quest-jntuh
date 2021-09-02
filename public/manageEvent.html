@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Event</title>
+    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web\css\all.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col3">
+            <img src="/images/quest_logo.png" alt="" width=80 height=80>
+        </div>
+        <div class="col3" align="center">
+            <h1 style="text-align:center">
+                QUEST - <script>document.write(new Date().getFullYear())</script>
+                <br>
+            </h1>
+            <h4 style="text-align:center">DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING</h4>
+            <h2 style="text-align:center">JNTUH COLLEGE OF ENGINEERING HYDERABAD</h2>
+
+        </div>
+
+        <div class="col3">
+            <img src="/images/jntuhlogo.png" alt="" width=120 height=120>
+        </div>
+    </div>
+
+    <h2 style="text-align: center;"><u>MANAGE EVENT</u></h2>
+    
+    <table class="table-sortable">
+        <thead>
+            <tr>
+                <th>Event Code </th>
+                <th>Event Name</th>
+                <th>Event Date</th>
+                <th>Event Time</th>
+                <th>Manage</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const i in contests) { %>
+                <tr>
+                    <td><a href="/event/<%=contests[i].eventId %>"><%= contests[i].eventId %></a></td>
+                    <td><%= contests[i].eventName %></td>
+                    <td><%= contests[i].eventDate %></td>
+                    <td><%= contests[i].eventTime %></td>
+                    <td><a href="/manage/event/<%=contests[i].eventId %>">✏️</a></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<script src="/include/js/main.js"></script>
+</body>
+</html>
