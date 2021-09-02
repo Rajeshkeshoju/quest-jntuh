@@ -49,7 +49,7 @@ var candidateRegistration = (req, res) => {
     var insertQuery = "INSERT INTO candidates (candidateId, candidateName, candidateContact) VALUES ('', '"+fullName+"', '"+contactNumber+"'); ";
     var getCandidateIdQuery = "SELECT candidateId FROM candidates WHERE candidateName = '"+ fullName +"'";
 
-    connection.query(insertQuery, (err, result) => {
+    /* connection.query(insertQuery, (err, result) => {
 
         if(!err){
             connection.query(getCandidateIdQuery, (err, result2) => {
@@ -74,9 +74,21 @@ var candidateRegistration = (req, res) => {
             log("Candidate registered succesfully");
             log(result);
         }
+    }); */
+
+    connection.query(insertQuery, (err, result) => {
+        if (err) {
+            log("Error while registering for contest");
+            res.status(500).send(err);
+            log(err);
+        }
+        else{
+            log("Candidate registered succesfully");
+            log(result);
+        }
     });
 
-    var candidateId;
+    /* var candidateId;
 
     connection.query(getCandidateIdQuery, (err, result) => {
         if(!err){
@@ -86,15 +98,15 @@ var candidateRegistration = (req, res) => {
         }
     });
 
-    log(registeringContest + " " + candidateId);
+    log(registeringContest + " " + candidateId); */
 
     
 
-    // connection.query(updateRegistersQuery, (err, result) => {
-    //     if(!err){
-    //         log(result);
-    //     }
-    // });
+    /* connection.query(updateRegistersQuery, (err, result) => {
+        if(!err){
+            log(result);
+        }
+    }); */
 
     return res.redirect('/registerCandidate');
 };
