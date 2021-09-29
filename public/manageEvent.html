@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Event</title>
-    <link rel="stylesheet" href="/fontawesome-free-5.15.3-web\css\all.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -37,7 +36,7 @@
                 <th>Event Name</th>
                 <th>Event Date</th>
                 <th>Event Time</th>
-                <th>Manage</th>
+                <!-- <th>Manage</th> -->
     
             </tr>
         </thead>
@@ -48,7 +47,7 @@
                     <td><%= contests[i].eventName %></td>
                     <td><%= contests[i].eventDate %></td>
                     <td><%= contests[i].eventTime %></td>
-                    <td><a href="/manage/event/<%=contests[i].eventId %>">✏️</a></td>
+                    <!-- <td><a href="/event/<%=contests[i].eventId %>">✏️</a></td> -->
                 </tr>
             <% } %>
         </tbody>
