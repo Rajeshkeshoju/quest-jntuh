@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Results</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col3">
+            <img src="/images/quest_logo.png" alt="" width=80 height=80>
+        </div>
+        <div class="col3" align="center">
+            <h1 style="text-align:center">
+                QUEST - <script>document.write(new Date().getFullYear())</script>
+                <br>
+            </h1>
+            <h4 style="text-align:center">DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING</h4>
+            <h2 style="text-align:center">JNTUH COLLEGE OF ENGINEERING HYDERABAD</h2>
+
+        </div>
+
+        <div class="col3">
+            <img src="/images/jntuhlogo.png" alt="" width=120 height=120>
+        </div>
+    </div>
+
+    <div align="center" class="row">
+        <% for (const i in events) { %>
+            <h2><%=events[i].eventId %></h2>
+            <h2><%=events[i].eventName %></h2>
+            <h2><%=events[i].eventDate %></h2>
+            <h2><%=events[i].eventTime %></h2>
+        <% } %>
+    </div>
+</body>
+</html>

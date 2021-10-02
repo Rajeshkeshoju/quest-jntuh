@@ -8,6 +8,8 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
+app.use('/', express.static(__dirname + '/'));
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
@@ -15,8 +17,6 @@ const PORT = 8000;
 
 const index = fs.readFileSync('public/index.html');
 const registerEvent = fs.readFileSync('public/registerEvent.html');
-const registerCandidate = fs.readFileSync('public/registerCandidate.html');
-const manageEvent = fs.readFileSync('public/manageEvent.html');
 
 function log(logMessage) {
     console.log(logMessage);
@@ -29,16 +29,42 @@ var connection = mySql.createConnection(
         password: '',
         database: 'quest',
 
-        multipleStatements: true
+        multipleStatements: true,
+        dateStrings: 'date'
     }
 );
 
 connection.connect(function (error) {
     if (error) {
-        log('Connection failed');
+        log('Database Connection failed');
     } else {
-        log('Connected');
+        log('Connected to Database');
     }   
+});
+
+app.get('/event/:eventCode', (req, res) => {
+    var selectionQuery = "SELECT * FROM events WHERE eventId = '"+ req.params.eventCode +"'";
+    connection.query(selectionQuery, (err, result) => {
+        if(!err){
+            res.render('event.html', {events: result});
+        }else{
+            log(err);  
+            throw err; 
+        }
+    });
+});
+
+app.get('/manageEvent', (req, res) => {
+    var selectionQuery = "SELECT * FROM events order by eventDate";
+    connection.query(selectionQuery, (err, result) => {
+        if (err) {
+            log(err);  
+            throw err;
+        }
+        else{
+            res.render('manageEvent.html', {contests: result});
+        }
+    });
 });
 
 var candidateRegistration = (req, res) => {
@@ -49,16 +75,15 @@ var candidateRegistration = (req, res) => {
     var insertQuery = "INSERT INTO candidates (candidateId, candidateName, candidateContact) VALUES ('', '"+fullName+"', '"+contactNumber+"'); ";
     var getCandidateIdQuery = "SELECT candidateId FROM candidates WHERE candidateName = '"+ fullName +"'";
 
-    /* connection.query(insertQuery, (err, result) => {
+    connection.query(insertQuery, (err, result) => {
 
         if(!err){
-            connection.query(getCandidateIdQuery, (err, result2) => {
-                if(!err){
-                    
-                    var updateRegistersQuery = "INSERT INTO registers (eventCode, candidateId) VALUES ('"+ registeringContest +"', '"+ result2.candidateId +"')";
-                    connection.query(updateRegistersQuery, (err, result3) => {
-                        if(!err){
-                            
+            connection.query(getCandidateIdQuery, (err2, result2) => {
+                if(!err2){
+                    var updateRegistersQuery = "INSERT INTO registers (eventCode, candidateId) VALUES ('"+ registeringContest +"', '"+ result2[0].candidateId +"')";
+                    connection.query(updateRegistersQuery, (err3, result3) => {
+                        if(!err3){
+                            log(result2[0].candidateId + "Registered for event succesfully");
                         }
                     });
                 }
@@ -67,46 +92,12 @@ var candidateRegistration = (req, res) => {
 
         if (err) {
             log("Error while registering for contest");
-            res.status(500).send(err);
             log(err);
         }
         else{
             log("Candidate registered succesfully");
-            log(result);
-        }
-    }); */
-
-    connection.query(insertQuery, (err, result) => {
-        if (err) {
-            log("Error while registering for contest");
-            res.status(500).send(err);
-            log(err);
-        }
-        else{
-            log("Candidate registered succesfully");
-            log(result);
         }
     });
-
-    /* var candidateId;
-
-    connection.query(getCandidateIdQuery, (err, result) => {
-        if(!err){
-            candidateId = result[0].candidateId;
-        }else{
-            log("err");
-        }
-    });
-
-    log(registeringContest + " " + candidateId); */
-
-    
-
-    /* connection.query(updateRegistersQuery, (err, result) => {
-        if(!err){
-            log(result);
-        }
-    }); */
 
     return res.redirect('/registerCandidate');
 };
@@ -121,29 +112,21 @@ var eventRegistration = (req, res) => {
     connection.query(insertQuery, (err, result) => {
         if (err) {
             log("Error while registering for event");
-            res.status(500).send(err);
-
             log(err);
             throw err;  
         }
         else{
             log("Event registered succesfully");
-            log(result);
         }
 
        return res.redirect('/registerEvent');
     });
 };
 
-app.get("/", (req, res) => {
-    res.write(index);
-    res.end();
-});
-
 app.post('/candidateRegistration', candidateRegistration);
 
 app.get("/registerCandidate", (req, res) => {
-    var selectionQuery = 'SELECT eventId, eventName FROM events';
+    var selectionQuery = 'SELECT * FROM events';
     connection.query(selectionQuery, (err, result) => {
         if (err) {
             log(err);  
@@ -151,7 +134,6 @@ app.get("/registerCandidate", (req, res) => {
         }
         else{
             res.render('registerCandidate.html', {contests: result});
-            log(result);
         }
     });
 });
@@ -163,20 +145,18 @@ app.get('/registerEvent', (req,res)=>{
     res.end();
 });
 
-app.get('/manageEvent', (req, res) => {
-    var selectionQuery = 'SELECT * FROM events';
+app.get("/", (req, res) => {
+    var selectionQuery = 'SELECT * FROM fest';
     connection.query(selectionQuery, (err, result) => {
-        if (err) {
+        if(!err){
+            res.render('index.html', {fest: result});
+        }else{
             log(err);  
-            throw err;
-        }
-        else{
-            res.render('manageEvent.html', {contests: result});
-            log(result);
+            throw err; 
         }
     });
 });
 
 app.listen(PORT, () => {
-    console.log("Connected at port:" + PORT);
+    console.log('Application running at http://localhost:' + PORT);
 });
