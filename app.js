@@ -9,7 +9,6 @@ app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
 app.use('/', express.static(__dirname + '/'));
-
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
@@ -42,6 +41,59 @@ connection.connect(function (error) {
     }   
 });
 
+
+var resultsUpdate = (req, res) => {
+
+    var firstPlace = req.body.firstPlace;
+
+    var secondPlace = "";
+    if(secondPlace != undefined){
+        secondPlace = req.body.secondPlace;
+    }
+
+    var thirdPlace = "";
+    if(thirdPlace != undefined){
+        thirdPlace = req.body.thirdPlace;
+    }
+
+     var eventId = req.body.eventCode;
+
+    var insertQuery = "INSERT INTO winners VALUES ('"+ eventId +"', '"+ firstPlace +"', '1')";
+    connection.query(insertQuery, (err, res) => {
+        if(!err){
+            log("Updated results");
+        }else{
+            log("Update error");
+        }
+    });
+
+    // var insertQuery = "INSERT INTO winners(eventId, candidateId) VALUES ('"+ eventId +"', '"+ candidateId +"')";
+    // connection.query(insertQuery, (err, res) => {
+    //     if(!err){
+    //         log("Updated results");
+    //     }else{
+    //         log("Update error");
+    //     }
+    // });
+
+    return res.redirect('/' + eventId + '/eventResults');
+}
+
+app.post('/resultsUpdate', resultsUpdate);
+
+app.get('/:eventCode/eventResults', (req, res) => {
+    var selectionQuery = "SELECT * FROM candidates WHERE candidateId IN (SELECT candidateId FROM registers WHERE eventCode = '"+ req.params.eventCode +"')";
+    
+    connection.query(selectionQuery, (err, result) => {
+        if(!err){
+            res.render('eventResults.html', {winners: result, eventId: req.params.eventCode});
+        }else{
+            log(err);  
+            throw err; 
+        }
+    });
+});
+
 app.get('/event/:eventCode', (req, res) => {
     var selectionQuery = "SELECT * FROM events WHERE eventId = '"+ req.params.eventCode +"'";
     connection.query(selectionQuery, (err, result) => {
@@ -55,7 +107,7 @@ app.get('/event/:eventCode', (req, res) => {
 });
 
 app.get('/manageEvent', (req, res) => {
-    var selectionQuery = "SELECT * FROM events order by eventDate";
+    var selectionQuery = "SELECT * FROM events ORDER BY eventDate";
     connection.query(selectionQuery, (err, result) => {
         if (err) {
             log(err);  

@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Results</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../include/js/timer.js"></script>
 </head>
-<body>
+<body onload="">
     <div class="row">
         <div class="col3">
             <img src="/images/quest_logo.png" alt="" width=80 height=80>
@@ -27,13 +28,34 @@
         </div>
     </div>
 
-    <div align="center" class="row">
-        <% for (const i in events) { %>
-            <h2><%=events[i].eventId %></h2>
-            <h2><%=events[i].eventName %></h2>
-            <h2><%=events[i].eventDate %></h2>
-            <h2><%=events[i].eventTime %></h2>
-        <% } %>
+    <br>
+    <div class="row" style="background-color: white;">
+
+        <h2><%=events[0].eventId %></h2>
+        <h2><%=events[0].eventName %></h2>
+        <h2><%=events[0].eventDate %></h2>
+        <h2><%=events[0].eventTime %></h2>
+    </div>
+
+
+    <div class="cardContainer" width="100%">
+        <a href="/manageCandidateOnEvent" class="center">
+            <div class="card col3">
+                <img src="/images/quest_logo.png" alt="Avatar" width="70%">
+                <div class="container">
+                  <h4><b>Manage Candidate</b></h4>
+                </div>
+            </div> 
+        </a>
+
+        <a href="/<%= events[0].eventId %>/eventResults" class="center">
+            <div class="card col3">
+                <img src="/images/quest_logo.png" alt="Avatar" width="70%">
+                <div class="container">
+                  <h4><b>Update winners </b></h4>
+                </div>
+            </div> 
+        </a>
     </div>
 </body>
 </html>
