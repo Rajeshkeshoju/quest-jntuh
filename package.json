@@ -2,9 +2,9 @@
   "name": "Examination",
   "version": "1.0.0",
   "description": "",
-  "main": "node index.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
